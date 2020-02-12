@@ -1,0 +1,51 @@
+{
+  "name": "Booking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server",
+    "start:dev": "nodemon server",
+    "seed": "node database/seed.js",
+    "build": "npx webpack -b"
+  },
+  "nodemonConfig": {
+    "watch": "server/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HRR43TeamHan/Booking.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HRR43TeamHan/Booking/issues"
+  },
+  "homepage": "https://github.com/HRR43TeamHan/Booking#readme",
+  "dependencies": {
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
+    "body-parser": "^1.19.0",
+    "eslint": "^6.8.0",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "morgan": "^1.9.1",
+    "mysql": "^2.18.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "babel-loader": "^8.0.6",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
