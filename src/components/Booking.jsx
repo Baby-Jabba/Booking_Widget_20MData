@@ -53,10 +53,10 @@ class Booking extends React.Component {
   }
 
   componentDidMount() {
-    // this.addASite();
-    // this.updataAsite();
-    // this.deleteASite();
-    this.deleteASite();
+    //this.addASite();  //checked
+    //this.updataAsite(); //checked
+    //this.deleteASite(); //checked
+    //this.getAsite();  //checked
     fetch('/api/booking/' + this.state.id, {
       method: 'POST',
       body: JSON.stringify({
@@ -78,10 +78,11 @@ class Booking extends React.Component {
       });
   }
 
+  //add
   addASite() {
     Axios.post('/api/addSite', {
-      site_name: 'hello.com',
-      logo: 'www.fakelogo.com',
+      site_name: 'nothing.com',
+      logo: 'www.dsdsd.com',
       tweak: 0.33,
       incentive: 2
     })
@@ -93,8 +94,9 @@ class Booking extends React.Component {
       });
   }
 
+  //delete
   deleteASite() {
-    Axios.get('/api/delete?id=6')
+    Axios.delete('/api/delete/?id=12')
       .then(response => {
         console.log(response);
       })
@@ -103,14 +105,25 @@ class Booking extends React.Component {
       });
   }
 
+  //update
   updataAsite() {
     Axios.put('/api/updateSite', {
-      id: 7,
-      site_name: 'don`tSayHello.com',
+      id: 15,
+      site_name: 'dsdsdon`tSayHello.com',
       logo: 'www.fakefakelogo.com',
       tweak: 0.23,
       incentive: 1
     })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  getAsite() {
+    Axios.get('/api/get/?id=14')
       .then(response => {
         console.log(response);
       })

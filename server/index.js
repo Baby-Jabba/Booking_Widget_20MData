@@ -90,11 +90,11 @@ app.post('/api/booking/:id/', (req, res) => {
 //add
 app.post('/api/addSite', (req, res) => {
   let site_name = req.body.site_name;
-  let log = req.body.log;
+  let logo = req.body.logo;
   let tweak = req.body.tweak;
   let incentive = req.body.incentive;
 
-  connection.addAnewSite(site_name, log, tweak, incentive, (err, result) => {
+  connection.addAnewSite(site_name, logo, tweak, incentive, (err, result) => {
     if (err) {
       res.send(err);
     } else {
@@ -104,7 +104,7 @@ app.post('/api/addSite', (req, res) => {
 });
 
 //delete
-app.get('/api/delete', (req, res) => {
+app.delete('/api/delete', (req, res) => {
   const id = req.query.id;
   connection.deleteASite(id, (err, result) => {
     if (err) {
@@ -119,14 +119,13 @@ app.get('/api/delete', (req, res) => {
 app.put('/api/updateSite', (req, res) => {
   let id = req.body.id;
   let site_name = req.body.site_name;
-  let log = req.body.log;
+  let logo = req.body.logo;
   let tweak = req.body.tweak;
   let incentive = req.body.incentive;
-
   connection.updateASite(
     id,
     site_name,
-    log,
+    logo,
     tweak,
     incentive,
     (err, result) => {
@@ -139,9 +138,9 @@ app.put('/api/updateSite', (req, res) => {
   );
 });
 
-//get
-app.get('/api/getSite/:id', (req, res) => {
+app.get('/api/get', (req, res) => {
   const id = req.query.id;
+  console.log(id);
   connection.getSingleSite(id, (err, result) => {
     if (err) {
       res.send(err);
@@ -151,7 +150,6 @@ app.get('/api/getSite/:id', (req, res) => {
   });
 });
 
-//app.delete('/api/deleteSite/:id')
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });

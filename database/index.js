@@ -21,7 +21,7 @@ const getSingleSiteQueal = 'SELECT * FROM sites where id = ?';
 const addAnewSiteQueal =
   'Insert into sites(site_name,logo,tweak,incentive) value(?,?,?,?)';
 const updateASiteQueal =
-  'UPDATE sites SET (site_name ,logo ,tweak,incentive)value(?,?,?,?) WHERE (id) value(?)';
+  'UPDATE sites set site_name =? ,logo=?,tweak=?,incentive=? WHERE id =?';
 // get a hotel's record
 const deleteASiteQueal = 'DELETE FROM sites where id =? ';
 
@@ -66,10 +66,10 @@ const getSingleSite = (id, callback) => {
 };
 
 //add
-const addAnewSite = (site_name, logo, tweak, incentive, id, callback) => {
+const addAnewSite = (site_name, logo, tweak, incentive, callback) => {
   connection.query(
     addAnewSiteQueal,
-    [site_name, logo, tweak, incentive, id],
+    [site_name, logo, tweak, incentive],
     (error, results) => {
       if (error) {
         callback(error, null);
