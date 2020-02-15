@@ -1,7 +1,13 @@
 var faker = require('faker');
 const db = require('./index.js');
 
-// POPULATE hotels TABLE WITH 100 HOTELS
+////////////////////
+
+//   THIS IS THE SEEDER FOR          ---->MYSQL<------
+
+////////////
+
+// POPULATE hotels TABLE WITH 5000000 HOTELS
 
 // CREATE TABLE hotels (
 //   id int NOT NULL AUTO_INCREMENT,
@@ -41,7 +47,7 @@ let seedHotels = () => {
         console.log(
           `SUCCESS! Added a hotel with an id of ${hotelsAdded} to the hotels table`
         );
-        if (hotelsAdded < 100) {
+        if (hotelsAdded < 5000000) {
           seedHotels();
         }
       }
@@ -49,7 +55,7 @@ let seedHotels = () => {
   );
 };
 
-// POPULATE sites TABLE WITH 20 SITES
+// POPULATE sites TABLE WITH 5000000 SITES
 
 // CREATE TABLE sites (
 //   id int NOT NULL AUTO_INCREMENT,
@@ -84,7 +90,7 @@ seedSites = () => {
         console.log(
           `SUCCESS! Added a site with an id of ${sitesAdded} to the sites table`
         );
-        if (sitesAdded < 20) {
+        if (sitesAdded < 5000000) {
           seedSites();
         }
       }
