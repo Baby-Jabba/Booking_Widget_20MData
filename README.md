@@ -1,6 +1,5 @@
 # Booking_Widget_1MData
 
-
 ADD
 '/api/addSite' with POST request
 exp:
