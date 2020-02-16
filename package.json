@@ -10,7 +10,7 @@
     "seed": "node database/seed.js",
     "build": "npx webpack -b",
     "build-dev": "webpack -d --mode development --watch",
-    "seedPost": "node --max_old_space_size=8000 database/postgreSQLSeed.js"
+    "seedPost": "node --max_old_space_size=8000 database/seeder/postgreSQLSeed.js"
   },
   "nodemonConfig": {
     "watch": "server/*"

@@ -1,5 +1,5 @@
 var faker = require('faker');
-const db = require('./index.js');
+const db = require('./index.js/index.js.js');
 
 ////////////////////
 

@@ -57,28 +57,32 @@ class Booking extends React.Component {
     //this.updataAsite(); //checked
     //this.deleteASite(); //checked
     //this.getAsite();  //checked
-    fetch('/api/booking/' + this.state.id, {
-      method: 'POST',
-      body: JSON.stringify({
-        checkIn: this.state.sessionCheckIn,
-        checkOut: this.state.sessionCheckOut,
-        adults: this.state.sessionAdults,
-        children: this.state.sessionChildren
-      }),
-      headers: { 'Content-type': 'application/json' }
+    //this.getSiteFromPostgreSQL(); //checked,route is working, but need to
+    //change id = 4500000 when database is finished seeding
+
+    this.getBooking();
+  }
+
+  getBooking() {
+    Axios.post('/api/booking/' + this.state.id, {
+      checkIn: this.state.sessionCheckIn,
+      checkOut: this.state.sessionCheckOut,
+      adults: this.state.sessionAdults,
+      children: this.state.sessionChildren
     })
-      .then(data => {
-        return data.json();
-      })
-      .then(dataJson => {
-        this.setState({
-          deal: dataJson.deal,
-          prices: dataJson.prices
+      .then(response => {
+        console.log(response);
+
+        this.setState(state => {
+          return { deal: response.data.deal, prices: response.data.prices };
         });
+      })
+      .catch(function(error) {
+        console.log(error);
       });
   }
 
-  //add
+  //creat
   addASite() {
     Axios.post('/api/addSite', {
       site_name: 'nothing.com',
@@ -121,9 +125,19 @@ class Booking extends React.Component {
         console.log(error);
       });
   }
-
+  //read
   getAsite() {
     Axios.get('/api/get/?id=14')
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+  //get Data from postSQl
+  getSiteFromPostgreSQL() {
+    Axios.get('/api/Postget/?id=1153')
       .then(response => {
         console.log(response);
       })
@@ -201,25 +215,8 @@ class Booking extends React.Component {
         });
       }
     }
-    fetch('/api/booking/' + this.state.id, {
-      method: 'POST',
-      body: JSON.stringify({
-        checkIn: this.state.sessionCheckIn,
-        checkOut: this.state.sessionCheckOut,
-        adults: this.state.sessionAdults,
-        children: this.state.sessionChildren
-      }),
-      headers: { 'Content-type': 'application/json' }
-    })
-      .then(data => {
-        return data.json();
-      })
-      .then(dataJson => {
-        this.setState({
-          deal: dataJson.deal,
-          prices: dataJson.prices
-        });
-      });
+
+    this.getBooking();
   }
 
   handleGuestInfoClose(e) {
@@ -284,25 +281,7 @@ class Booking extends React.Component {
     this.setState({
       isGuestInformationActive: false
     });
-    fetch('/api/booking/' + this.state.id, {
-      method: 'POST',
-      body: JSON.stringify({
-        checkIn: this.state.sessionCheckIn,
-        checkOut: this.state.sessionCheckOut,
-        adults: this.state.sessionAdults,
-        children: this.state.sessionChildren
-      }),
-      headers: { 'Content-type': 'application/json' }
-    })
-      .then(data => {
-        return data.json();
-      })
-      .then(dataJson => {
-        this.setState({
-          deal: dataJson.deal,
-          prices: dataJson.prices
-        });
-      });
+    this.getBooking();
   }
 
   render() {
@@ -335,7 +314,7 @@ class Booking extends React.Component {
               }}
             >
               <span style={{ marginRight: 6 }}>
-                <i class='fas fa-user-friends'></i>
+                <i className='fas fa-user-friends'></i>
               </span>
               <span>{this.state.viewers}</span>
             </div>
@@ -382,7 +361,7 @@ class Booking extends React.Component {
                       marginRight: 5
                     }}
                   >
-                    <i class='far fa-calendar-alt'></i>
+                    <i className='far fa-calendar-alt'></i>
                   </div>
                   <div style={{ marginLeft: 30 }}>
                     <div
@@ -458,7 +437,7 @@ class Booking extends React.Component {
                       marginRight: 3
                     }}
                   >
-                    <i class='far fa-calendar-alt'></i>
+                    <i className='far fa-calendar-alt'></i>
                   </div>
                   <div style={{ marginLeft: 30 }}>
                     <div
@@ -522,7 +501,7 @@ class Booking extends React.Component {
                   marginRight: 8
                 }}
               >
-                <i class='fas fa-user-friends'></i>
+                <i className='fas fa-user-friends'></i>
               </div>
               <div style={{ marginLeft: 30 }}>
                 <div
@@ -569,7 +548,7 @@ class Booking extends React.Component {
             <div id='hotelDeal'>
               <div style={{ margin: 10 }}>
                 <span style={{ color: '#D91E18', marginRight: 8 }}>
-                  <i class='fas fa-tag'></i>
+                  <i className='fas fa-tag'></i>
                 </span>
                 <span
                   style={{
@@ -622,7 +601,7 @@ class Booking extends React.Component {
                     display: 'inline-block'
                   }}
                 >
-                  <i class='fas fa-skull'></i>.com
+                  <i className='fas fa-skull'></i>.com
                 </div>
                 <button
                   style={{
@@ -687,7 +666,7 @@ class Booking extends React.Component {
                     display: 'inline-block'
                   }}
                 >
-                  <i class='fas fa-plane'></i>.com
+                  <i className='fas fa-plane'></i>.com
                 </div>
                 <button
                   style={{
@@ -752,7 +731,7 @@ class Booking extends React.Component {
                     display: 'inline-block'
                   }}
                 >
-                  <i class='fas fa-space-shuttle'></i>.com
+                  <i className='fas fa-space-shuttle'></i>.com
                 </div>
                 <button
                   style={{
@@ -828,7 +807,7 @@ class Booking extends React.Component {
                         width: 15
                       }}
                     >
-                      <i class='fas fa-external-link-alt'></i>
+                      <i className='fas fa-external-link-alt'></i>
                     </div>
                     <div
                       style={{
@@ -878,7 +857,7 @@ class Booking extends React.Component {
                         width: 25
                       }}
                     >
-                      <i class='fas fa-external-link-alt'></i>
+                      <i className='fas fa-external-link-alt'></i>
                     </div>
                     <div
                       style={{
@@ -933,7 +912,7 @@ class Booking extends React.Component {
                         width: 15
                       }}
                     >
-                      <i class='fas fa-external-link-alt'></i>
+                      <i className='fas fa-external-link-alt'></i>
                     </div>
                     <div
                       style={{
@@ -975,7 +954,7 @@ class Booking extends React.Component {
                       }}
                     >
                       <span>View all 20 deals</span>
-                      <i class='fas fa-caret-down'></i>
+                      <i className='fas fa-caret-down'></i>
                     </div>
                   </div>
                 </div>
@@ -1100,7 +1079,7 @@ class Booking extends React.Component {
                       this.handleCalendarToggleMonthLeft(e);
                     }}
                   >
-                    <i class='fas fa-chevron-left'></i>
+                    <i className='fas fa-chevron-left'></i>
                   </div>
                 </div>
                 <Calendar
@@ -1151,7 +1130,7 @@ class Booking extends React.Component {
                       this.handleCalendarToggleMonthRight(e);
                     }}
                   >
-                    <i class='fas fa-chevron-right'></i>
+                    <i className='fas fa-chevron-right'></i>
                   </div>
                 </div>
                 <Calendar
@@ -1185,7 +1164,7 @@ class Booking extends React.Component {
                 }}
               >
                 Average daily rates: ${this.state.prices[0].price} - $
-                {this.state.prices[19].price}
+                {this.state.prices[17].price}
               </span>
             </div>
             <div
@@ -1307,7 +1286,7 @@ class Booking extends React.Component {
                       this.handleCalendarToggleMonthLeft(e);
                     }}
                   >
-                    <i class='fas fa-chevron-left'></i>
+                    <i className='fas fa-chevron-left'></i>
                   </div>
                 </div>
                 <Calendar
@@ -1358,7 +1337,7 @@ class Booking extends React.Component {
                       this.handleCalendarToggleMonthRight(e);
                     }}
                   >
-                    <i class='fas fa-chevron-right'></i>
+                    <i className='fas fa-chevron-right'></i>
                   </div>
                 </div>
                 <Calendar
@@ -1392,7 +1371,7 @@ class Booking extends React.Component {
                 }}
               >
                 Average daily rates: ${this.state.prices[0].price} - $
-                {this.state.prices[19].price}
+                {this.state.prices[17].price}
               </span>
             </div>
             <div
@@ -1445,7 +1424,7 @@ class Booking extends React.Component {
                 this.handleGuestInfoClose(e);
               }}
             >
-              <i class='fas fa-times'></i>
+              <i className='fas fa-times'></i>
             </div>
 
             <div
@@ -1463,7 +1442,7 @@ class Booking extends React.Component {
             >
               <div style={{ display: 'inline-block', marginTop: 12 }}>
                 <span>
-                  <i class='fas fa-bed'></i>
+                  <i className='fas fa-bed'></i>
                 </span>
                 <span style={{ marginLeft: 5 }}>Rooms</span>
               </div>
@@ -1489,7 +1468,7 @@ class Booking extends React.Component {
                     this.handleToggleDownGuestInfoCategory('sessionRooms', e);
                   }}
                 >
-                  <i class='fas fa-minus'></i>
+                  <i className='fas fa-minus'></i>
                 </div>
                 <div
                   style={{
@@ -1521,7 +1500,7 @@ class Booking extends React.Component {
                     this.handleToggleUpGuestInfoCategory('sessionRooms', e);
                   }}
                 >
-                  <i class='fas fa-plus'></i>
+                  <i className='fas fa-plus'></i>
                 </div>
               </div>
             </div>
@@ -1541,7 +1520,7 @@ class Booking extends React.Component {
             >
               <div style={{ display: 'inline-block', marginTop: 12 }}>
                 <span>
-                  <i class='fas fa-bed'></i>
+                  <i className='fas fa-bed'></i>
                 </span>
                 <span style={{ marginLeft: 5 }}>Adults</span>
               </div>
@@ -1567,7 +1546,7 @@ class Booking extends React.Component {
                     this.handleToggleDownGuestInfoCategory('sessionAdults', e);
                   }}
                 >
-                  <i class='fas fa-minus'></i>
+                  <i className='fas fa-minus'></i>
                 </div>
                 <div
                   style={{
@@ -1599,7 +1578,7 @@ class Booking extends React.Component {
                     this.handleToggleUpGuestInfoCategory('sessionAdults', e);
                   }}
                 >
-                  <i class='fas fa-plus'></i>
+                  <i className='fas fa-plus'></i>
                 </div>
               </div>
             </div>
@@ -1619,7 +1598,7 @@ class Booking extends React.Component {
             >
               <div style={{ display: 'inline-block', marginTop: 12 }}>
                 <span>
-                  <i class='fas fa-bed'></i>
+                  <i className='fas fa-bed'></i>
                 </span>
                 <span style={{ marginLeft: 5 }}>Children</span>
               </div>
@@ -1648,7 +1627,7 @@ class Booking extends React.Component {
                     );
                   }}
                 >
-                  <i class='fas fa-minus'></i>
+                  <i className='fas fa-minus'></i>
                 </div>
                 <div
                   style={{
@@ -1680,7 +1659,7 @@ class Booking extends React.Component {
                     this.handleToggleUpGuestInfoCategory('sessionChildren', e);
                   }}
                 >
-                  <i class='fas fa-plus'></i>
+                  <i className='fas fa-plus'></i>
                 </div>
               </div>
             </div>
