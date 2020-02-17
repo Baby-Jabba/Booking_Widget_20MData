@@ -167,16 +167,16 @@ app.get('/api/get', (req, res) => {
   });
 });
 
-app.get('/api/Postget', (req, res) => {
-  const startId = req.query.id;
-  connection.postgresSQLgetTenPersent(startId, (err, result) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
+// app.get('/api/Postget', (req, res) => {
+//   const startId = req.query.id;
+//   connection.postgresSQLgetTenPersent(startId, (err, result) => {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.send(result);
+//     }
+//   });
+// });
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

@@ -110,6 +110,8 @@ const deleteASiteQueal = 'DELETE FROM sites where id =? ';
 
 //-----------PostgresSQL------------------
 const { Client } = require('pg');
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+
 const postgresSQLclient = new Client({
   user: 'postgres',
   database: 'sec_hrr43',
@@ -117,8 +119,6 @@ const postgresSQLclient = new Client({
   port: 5432
 });
 postgresSQLclient.connect();
-
-const getTenPersentQuery = 'SELECT * FROM sites where id = $1';
 
 const getTargetHotelInfo = (id, callback) => {
   postgresSQLclient.query(
@@ -237,5 +237,6 @@ module.exports = {
   getSingleSite,
   addAnewSite,
   updateASite,
-  deleteASite
+  deleteASite,
+  getAllhotels
 };
