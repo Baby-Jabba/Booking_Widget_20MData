@@ -10,7 +10,7 @@
     "seed": "node database/seed.js",
     "build": "npx webpack -b",
     "build-dev": "webpack -d --mode development --watch",
-    "seedPost": "node --max_old_space_size=8000 database/postgreSQLSeed.js"
+    "seedPost": "node --max_old_space_size=8000 database/seeder/postgreSQLSeed.js"
   },
   "nodemonConfig": {
     "watch": "server/*"
@@ -32,6 +32,7 @@
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cassandra-driver": "^4.4.0",
+    "csv-writer": "^1.6.0",
     "eslint": "^6.8.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
