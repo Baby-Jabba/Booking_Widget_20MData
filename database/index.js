@@ -237,6 +237,5 @@ module.exports = {
   getSingleSite,
   addAnewSite,
   updateASite,
-  deleteASite,
-  getAllhotels
+  deleteASite
 };

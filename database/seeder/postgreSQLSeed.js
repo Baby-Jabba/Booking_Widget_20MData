@@ -28,7 +28,7 @@ const sites = () => {
 };
 
 const hotels = () => {
-  for (let index = 0; index < 20; index++) {
+  for (let index = 0; index < 136; index++) {
     const standardRate = faker.random.number({ min: 200, max: 1200 });
     const adultPremium = faker.finance.amount(0.1, 0.2, 2);
     const childPremium = faker.finance.amount(0.05, 0.1, 2);
