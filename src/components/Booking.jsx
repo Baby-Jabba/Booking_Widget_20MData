@@ -53,10 +53,10 @@ class Booking extends React.Component {
   }
 
   componentDidMount() {
-    //this.addASite();  //checked
+    //this.addASite(); //checked
     //this.updataAsite(); //checked
     //this.deleteASite(); //checked
-    //this.getAsite();  //checked
+    //this.getAsite(); //checked
     //this.getSiteFromPostgreSQL(); //checked,route is working, but need to
     //change id = 4500000 when database is finished seeding
 
@@ -113,7 +113,7 @@ class Booking extends React.Component {
   updataAsite() {
     Axios.put('/api/updateSite', {
       id: 15,
-      site_name: 'dsdsdon`tSayHello.com',
+      site_name: 'dsdsdssssssson`tSayHello.com',
       logo: 'www.fakefakelogo.com',
       tweak: 0.23,
       incentive: 1
@@ -1164,7 +1164,7 @@ class Booking extends React.Component {
                 }}
               >
                 Average daily rates: ${this.state.prices[0].price} - $
-                {this.state.prices[17].price}
+                {this.state.prices[16].price}
               </span>
             </div>
             <div
@@ -1371,7 +1371,7 @@ class Booking extends React.Component {
                 }}
               >
                 Average daily rates: ${this.state.prices[0].price} - $
-                {this.state.prices[17].price}
+                {this.state.prices[16].price}
               </span>
             </div>
             <div

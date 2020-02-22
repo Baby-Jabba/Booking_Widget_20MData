@@ -37,29 +37,55 @@ const makeHotelCSV = callback => {
   });
 };
 
-const makeSitesCSV = () => {
-  postgresSQLclient.query('select * from sites', (err, result) => {
+makeDates = () => {
+  postgresSQLclient.query('select * from dates', (err, result) => {
     if (err) {
       callback(error, null);
     } else {
+      let csv = result.rows;
       const csvWriter = createCsvWriter({
-        path: '/Users/yuhangchen/Documents/data/sites.csv',
+        path: '/Users/yuhangchen/Documents/data/dates.csv',
         header: [
           { id: 'id', title: 'ID' },
-          { id: 'site_name', title: 'SITE_NAME' },
-          { id: 'logo', title: 'LOGO' },
-          { id: 'tweak', title: 'TWEAK' },
-          { id: 'incentive', title: 'INCENTIVE' }
+          { id: 'date_premium', title: 'DATE_PREMIUM' }
         ]
       });
 
       csvWriter
-        .writeRecords(result.rows) // returns a promise
+        .writeRecords(csv) // returns a promise
         .then(() => {
-          console.log('...sites.csv Done');
+          console.log('...Done');
         });
     }
   });
+};
+
+const makeSitesCSV = () => {
+  postgresSQLclient.query(
+    'select * from sites where id > 2500000',
+    (err, result) => {
+      if (err) {
+        callback(error, null);
+      } else {
+        const csvWriter = createCsvWriter({
+          path: '/Users/yuhangchen/Documents/data/sites1.csv',
+          header: [
+            { id: 'id', title: 'ID' },
+            { id: 'site_name', title: 'SITE_NAME' },
+            { id: 'logo', title: 'LOGO' },
+            { id: 'tweak', title: 'TWEAK' },
+            { id: 'incentive', title: 'INCENTIVE' }
+          ]
+        });
+
+        csvWriter
+          .writeRecords(result.rows) // returns a promise
+          .then(() => {
+            console.log('...sites.csv Done');
+          });
+      }
+    }
+  );
 };
 
 // makeHotelCSV((err, result) => {
@@ -70,4 +96,5 @@ const makeSitesCSV = () => {
 //   }
 // });
 
-makeSitesCSV();
+//makeSitesCSV();
+makeDates();

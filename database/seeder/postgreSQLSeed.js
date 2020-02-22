@@ -1,5 +1,6 @@
 var faker = require('faker');
 const { Pool, Client } = require('pg');
+
 const client = new Client({
   user: 'postgres',
   database: 'sec_hrr43',
@@ -9,7 +10,7 @@ const client = new Client({
 client.connect();
 
 const sites = () => {
-  for (let index = 0; index < 5000000; index++) {
+  for (let index = 0; index < 10000000; index++) {
     let siteName = `${faker.company.catchPhraseAdjective()}.com`;
     let logo = faker.image.cats();
     let tweak = faker.finance.amount(0.8, 1, 2);
@@ -28,7 +29,7 @@ const sites = () => {
 };
 
 const hotels = () => {
-  for (let index = 0; index < 20; index++) {
+  for (let index = 0; index < 10000000; index++) {
     const standardRate = faker.random.number({ min: 200, max: 1200 });
     const adultPremium = faker.finance.amount(0.1, 0.2, 2);
     const childPremium = faker.finance.amount(0.05, 0.1, 2);
@@ -78,28 +79,28 @@ seedDates = () => {
   );
 };
 
-//sites();
+sites();
 hotels();
-//seedDates();
+seedDates();
 
-// // CREATE TABLE sites (
-// //     id serial  PRIMARY KEY serial NOT NULL,
-// //     site_name CHAR(50),
-// //     logo CHAR(200),
-// //     tweak decimal,
-// //     incentive decimal,
-// //    );
+//    CREATE TABLE sites (
+//     id serial PRIMARY KEY NOT NULL,
+//     site_name CHAR (50),
+//     logo char (25),
+//     tweak decimal,
+//     incentive decimal
+//     );
 
 // CREATE TABLE hotel (
-//   id serial  PRIMARY KEY  NOT NULL,
+//   id serial PRIMARY KEY NOT NULL,
 //   standard_rate decimal,
 //   adult_premium decimal,
 //   child_premium decimal,
 //   max_stay decimal,
-// deal char(25)
+//   deal char(25)
 // );
 
 // CREATE TABLE dates (
-//   id SERIAL PRIMARY KEY NOT NULL,
-//  date_premium decimal
+//    id serial PRIMARY KEY NOT NULL,
+//    date_premium decimal
 // );

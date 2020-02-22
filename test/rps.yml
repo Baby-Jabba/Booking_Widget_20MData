@@ -1,0 +1,21 @@
+config:
+  target: 'http://localhost:50003'
+  phases:
+    - duration: 60
+      arrivalRate: 200
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - flow:
+      - get:
+          url: '/api/get?id=3434343'
+      - post:
+          url: '/api/addSite'
+          form:
+            site_name: 'www.dfdfdfd.com'
+            logo: 'www.dfdfdfdgdf.com'
+            tweak: 0.33
+            incentive: 2
+      - delete:
+          url: '/api/delete/?id=12'
