@@ -80,7 +80,7 @@ seedDates = () => {
 };
 
 sites();
-hotels();
+//hotels();
 seedDates();
 
 //    CREATE TABLE sites (
