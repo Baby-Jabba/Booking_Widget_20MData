@@ -66,7 +66,7 @@ const sites3 = () => {
 };
 
 const hotels1 = () => {
-  for (let index = 0; index < 3333334; index++) {
+  for (let index = 0; index < 2355747; index++) {
     const standardRate = faker.random.number({ min: 200, max: 1200 });
     const adultPremium = faker.finance.amount(0.1, 0.2, 2);
     const childPremium = faker.finance.amount(0.05, 0.1, 2);
@@ -175,7 +175,7 @@ hotels1();
 //     incentive decimal
 //     );
 
-// CREATE TABLE hotel (
+// CREATE TABLE hotels (
 //   id serial PRIMARY KEY NOT NULL,
 //   standard_rate decimal,
 //   adult_premium decimal,
