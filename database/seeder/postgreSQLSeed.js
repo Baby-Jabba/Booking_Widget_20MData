@@ -28,7 +28,7 @@ const sites1 = () => {
   }
 };
 const sites2 = () => {
-  for (let index = 0; index < 3333334; index++) {
+  for (let index = 0; index < 2590828; index++) {
     let siteName = `${faker.company.catchPhraseAdjective()}.com`;
     let logo = faker.image.cats();
     let tweak = faker.finance.amount(0.8, 1, 2);
