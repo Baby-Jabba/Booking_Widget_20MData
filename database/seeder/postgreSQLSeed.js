@@ -161,8 +161,8 @@ seedDates = () => {
 
 //sites1();
 //sites2();
-sites3();
-// hotels1();
+//sites3();
+hotels1();
 // hotels2();
 // hotels3();
 //seedDates();
