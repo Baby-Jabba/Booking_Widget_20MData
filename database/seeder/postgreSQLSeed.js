@@ -47,7 +47,7 @@ const sites2 = () => {
 };
 
 const sites3 = () => {
-  for (let index = 0; index < 3333336; index++) {
+  for (let index = 0; index < 3219555; index++) {
     let siteName = `${faker.company.catchPhraseAdjective()}.com`;
     let logo = faker.image.cats();
     let tweak = faker.finance.amount(0.8, 1, 2);
@@ -160,8 +160,8 @@ seedDates = () => {
 };
 
 //sites1();
-sites2();
-//sites3();
+//sites2();
+sites3();
 // hotels1();
 // hotels2();
 // hotels3();
