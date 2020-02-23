@@ -7,7 +7,7 @@
     "test": "jest",
     "start": "nodemon server",
     "start:dev": "nodemon server",
-    "seed": "node database/seed.js",
+    "seed": "node --max_old_space_size=8000 database/seeder/postgreSQLSeed.js",
     "build": "npx webpack -b",
     "build-dev": "webpack -d --mode development --watch",
     "seedPost": "node --max_old_space_size=8000 database/seeder/postgreSQLSeed.js"
