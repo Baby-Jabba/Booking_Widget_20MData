@@ -155,7 +155,7 @@ seedDates = () => {
           seedDates();
         }
       }
-    };
+    }
   );
 };
 
