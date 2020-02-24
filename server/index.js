@@ -1,4 +1,3 @@
-require('newrelic');
 const express = require('express');
 const connection = require('../database/index');
 const app = express();
