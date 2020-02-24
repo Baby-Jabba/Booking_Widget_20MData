@@ -48,7 +48,8 @@ class Booking extends React.Component {
       areCheckOutCalendarsActive: false,
       isGuestInformationActive: false,
       isSmallQuotesDisplayActive: false,
-      isDisclaimerActive: false
+      isDisclaimerActive: false,
+      address: 'http://localhost:50003/'
     };
   }
 
@@ -64,7 +65,8 @@ class Booking extends React.Component {
   }
 
   getBooking() {
-    Axios.post('/api/booking/' + this.state.id, {
+    const { address, id } = this.state;
+    Axios.post(`${address}api/booking/${id}`, {
       checkIn: this.state.sessionCheckIn,
       checkOut: this.state.sessionCheckOut,
       adults: this.state.sessionAdults,

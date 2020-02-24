@@ -4,6 +4,14 @@ const connection = require('../database/index');
 const app = express();
 
 app.use(express.json());
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
 app.use('/bundle.js', express.static(__dirname + '/../public/bundle.js'));
 app.use(express.urlencoded({ extended: false }));
 app.use('/:id', express.static('./public'));
