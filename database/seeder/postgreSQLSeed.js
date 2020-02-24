@@ -163,8 +163,8 @@ seedDates = () => {
 //sites2();
 //sites3();
 //hotels1();
-hotels2();
-// hotels3();
+//hotels2();
+hotels3();
 //seedDates();
 
 //    CREATE TABLE sites (
