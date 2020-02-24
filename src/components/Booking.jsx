@@ -49,7 +49,7 @@ class Booking extends React.Component {
       isGuestInformationActive: false,
       isSmallQuotesDisplayActive: false,
       isDisclaimerActive: false,
-      address: 'http://localhost:50003/'
+      address: 'http://ec2-54-250-169-60.ap-northeast-1.compute.amazonaws.com/'
     };
   }
 
@@ -86,7 +86,8 @@ class Booking extends React.Component {
 
   //creat
   addASite() {
-    Axios.post('/api/addSite', {
+    const { address } = this.state;
+    Axios.post(`${address}api/addSite`, {
       site_name: 'nothing.com',
       logo: 'www.dsdsd.com',
       tweak: 0.33,
@@ -102,7 +103,8 @@ class Booking extends React.Component {
 
   //delete
   deleteASite() {
-    Axios.delete('/api/delete/?id=12')
+    const { address } = this.state;
+    Axios.delete(`${address}api/delete/?id=12`)
       .then(response => {
         console.log(response);
       })
