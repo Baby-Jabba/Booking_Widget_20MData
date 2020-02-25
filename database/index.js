@@ -1,6 +1,5 @@
 //-----------PostgresSQL------------------
 const { Client } = require('pg');
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 const postgresSQLclient = new Client({
   user: 'postgres',
