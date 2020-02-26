@@ -1,15 +1,15 @@
 config:
   target: 'http://localhost:50003'
   phases:
-    - duration: 60
-      arrivalRate: 200
+    - duration: 600
+      arrivalRate: 1000
   defaults:
     headers:
       x-my-service-auth: '987401838271002188298567'
 scenarios:
   - flow:
       - get:
-          url: '/api/get?id=3434343'
+          url: '/api/get?id=34343433'
       - post:
           url: '/api/addSite'
           form:
@@ -18,4 +18,4 @@ scenarios:
             tweak: 0.33
             incentive: 2
       - delete:
-          url: '/api/delete/?id=12'
+          url: '/api/delete/?id=122323'
