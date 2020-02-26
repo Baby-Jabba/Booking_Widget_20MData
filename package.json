@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "artillery run test/rps.yml",
     "start": "nodemon server",
     "start:dev": "nodemon server",
     "seed": "node --max_old_space_size=8000 database/seeder/postgreSQLSeed.js",
