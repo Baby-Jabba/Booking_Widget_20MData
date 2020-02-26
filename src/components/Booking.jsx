@@ -12,26 +12,33 @@ class Booking extends React.Component {
       id: window.location.pathname.replace(/\//g, ''),
       deal: '',
       prices: [
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' },
-        { name: '', price: '' }
+        { name: '', price: 1 },
+        { name: '', price: 2 },
+        { name: '', price: 3 },
+        { name: '', price: 4 },
+        { name: '', price: 5 },
+        { name: '', price: 6 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 }
       ],
       viewers: this.generateViewersMessage(),
       sessionCheckIn: 42,
@@ -74,7 +81,6 @@ class Booking extends React.Component {
     })
       .then(response => {
         console.log(response);
-
         this.setState(state => {
           return { deal: response.data.deal, prices: response.data.prices };
         });
@@ -643,7 +649,7 @@ class Booking extends React.Component {
                     fontWeight: 600
                   }}
                 >
-                  ${this.state.prices[0].price}
+                  ${this.state.prices[1].price}
                 </div>
               </div>
 
@@ -1167,7 +1173,7 @@ class Booking extends React.Component {
                   fontSize: 13
                 }}
               >
-                Average daily rates: ${this.state.prices[0].price} - $
+                Average daily rates: ${this.state.prices[1].price} - $
                 {this.state.prices[16].price}
               </span>
             </div>
