@@ -81,8 +81,9 @@ class Booking extends React.Component {
     })
       .then(response => {
         console.log(response);
-        this.setState(state => {
-          return { deal: response.data.deal, prices: response.data.prices };
+        this.setState({
+          deal: response.data.deal,
+          prices: response.data.prices
         });
       })
       .catch(function(error) {
@@ -225,8 +226,6 @@ class Booking extends React.Component {
         });
       }
     }
-
-    this.getBooking();
   }
 
   handleGuestInfoClose(e) {
