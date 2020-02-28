@@ -12,19 +12,15 @@ app.use(function(req, res, next) {
   );
   next();
 });
+app.use('/bundle.js', express.static(__dirname + '/../public/bundle.js'));
 app.use(
-  '/loaderio-c4f7aaa46044d73a9734101b127559e4.txt',
-  express.static(__dirname + 'public')
+  '/loaderio-c4f7aaa46044d73a9734101b127559e4.js',
+  express.static(
+    __dirname + '/../public/loaderio-c4f7aaa46044d73a9734101b127559e4.js'
+  )
 );
-// app.use('/bundle.js', express.static(__dirname + '/../public/bundle.js'));
-// app.use(
-//   '/loaderio-c4f7aaa46044d73a9734101b127559e4.txt',
-//   express.static(
-//     __dirname + '/../public/loaderio-c4f7aaa46044d73a9734101b127559e4.txt'
-//   )
-// );
 app.use(express.urlencoded({ extended: false }));
-// app.use('/:id', express.static('./public'));
+app.use('/:id', express.static('./public'));
 
 const PORT = process.env.BOOKING_PORT || 50003;
 
