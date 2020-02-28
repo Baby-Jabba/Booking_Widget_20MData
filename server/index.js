@@ -22,7 +22,7 @@ app.use('/bundle.js', express.static(__dirname + '/../public/bundle.js'));
 app.use(express.urlencoded({ extended: false }));
 app.use('/:id', express.static('./public'));
 app.use(
-  '/',
+  '/loaderio-c4f7aaa46044d73a9734101b127559e4.txt',
   express.static('/../public/loaderio-c4f7aaa46044d73a9734101b127559e4.txt')
 );
 
