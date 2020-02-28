@@ -13,7 +13,12 @@ app.use(function(req, res, next) {
   next();
 });
 app.use('/bundle.js', express.static(__dirname + '/../public/bundle.js'));
-
+app.use(
+  '/loaderio-c4f7aaa46044d73a9734101b127559e4.js',
+  express.static(
+    __dirname + '/../public/loaderio-c4f7aaa46044d73a9734101b127559e4.js'
+  )
+);
 app.use(express.urlencoded({ extended: false }));
 app.use('/:id', express.static('./public'));
 
