@@ -20,7 +20,7 @@ app.use(
   )
 );
 app.use(express.urlencoded({ extended: false }));
-app.use('/:id', express.static('./public'));
+// app.use('/:id', express.static('./public'));
 
 const PORT = process.env.BOOKING_PORT || 50003;
 
