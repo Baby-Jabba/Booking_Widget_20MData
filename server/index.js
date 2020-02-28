@@ -12,7 +12,10 @@ app.use(function(req, res, next) {
   );
   next();
 });
-app.use('/', express.static(__dirname + 'public'));
+app.use(
+  '/loaderio-c4f7aaa46044d73a9734101b127559e4.txt',
+  express.static(__dirname + 'public')
+);
 // app.use('/bundle.js', express.static(__dirname + '/../public/bundle.js'));
 // app.use(
 //   '/loaderio-c4f7aaa46044d73a9734101b127559e4.txt',
