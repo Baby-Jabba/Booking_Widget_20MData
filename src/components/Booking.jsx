@@ -38,6 +38,36 @@ class Booking extends React.Component {
         { name: '', price: 7 },
         { name: '', price: 7 },
         { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
+        { name: '', price: 7 },
         { name: '', price: 7 }
       ],
       viewers: this.generateViewersMessage(),
@@ -77,13 +107,13 @@ class Booking extends React.Component {
       checkIn: this.state.sessionCheckIn,
       checkOut: this.state.sessionCheckOut,
       adults: this.state.sessionAdults,
-      children: this.state.sessionChildren
+      children: this.state.sessionChildren,
+      hello: 'hello'
     })
       .then(response => {
         console.log(response);
-        this.setState({
-          deal: response.data.deal,
-          prices: response.data.prices
+        this.setState(() => {
+          return { deal: response.data.deal, prices: response.data.prices };
         });
       })
       .catch(function(error) {
@@ -287,6 +317,8 @@ class Booking extends React.Component {
   }
 
   handleGuestInfoUpdateClick(e) {
+    console.log('123');
+    console.log(this.state);
     this.setState({
       isGuestInformationActive: false
     });

@@ -13,6 +13,10 @@ app.use(function(req, res, next) {
   next();
 });
 app.use('/bundle.js', express.static(__dirname + '/../public/bundle.js'));
+app.use(
+  '/loaderio-c4f7aaa46044d73a9734101b127559e4',
+  express.static(__dirname + '/c4f7aaa46044d73a9734101b127559e4.txt')
+);
 app.use(express.urlencoded({ extended: false }));
 app.use('/:id', express.static('./public'));
 
@@ -20,7 +24,7 @@ const PORT = process.env.BOOKING_PORT || 50003;
 
 app.post('/api/booking/:id/', (req, res) => {
   // get the record for the hotel corresponding to the id passed through the url
-
+  console.log('123');
   connection.getTargetHotelInfo(req.params.id, (error, hotel) => {
     if (error) {
       console.error(error);
@@ -114,67 +118,67 @@ app.post('/api/booking/:id/', (req, res) => {
 });
 
 //add
-app.post('/api/addSite', (req, res) => {
-  let site_name = req.body.site_name;
-  let logo = req.body.logo;
-  let tweak = req.body.tweak;
-  let incentive = req.body.incentive;
+// app.post('/api/addSite', (req, res) => {
+//   let site_name = req.body.site_name;
+//   let logo = req.body.logo;
+//   let tweak = req.body.tweak;
+//   let incentive = req.body.incentive;
 
-  connection.addAnewSite(site_name, logo, tweak, incentive, (err, result) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
+//   connection.addAnewSite(site_name, logo, tweak, incentive, (err, result) => {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.send(result);
+//     }
+//   });
+// });
 
 //delete
-app.delete('/api/delete', (req, res) => {
-  const id = req.query.id;
-  connection.deleteASite(id, (err, result) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
+// app.delete('/api/delete', (req, res) => {
+//   const id = req.query.id;
+//   connection.deleteASite(id, (err, result) => {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.send(result);
+//     }
+//   });
+// });
 
 //update
-app.put('/api/updateSite', (req, res) => {
-  let id = req.body.id;
-  let site_name = req.body.site_name;
-  let logo = req.body.logo;
-  let tweak = req.body.tweak;
-  let incentive = req.body.incentive;
-  connection.updateASite(
-    id,
-    site_name,
-    logo,
-    tweak,
-    incentive,
-    (err, result) => {
-      if (err) {
-        res.send(err);
-      } else {
-        res.send(result);
-      }
-    }
-  );
-});
+// app.put('/api/updateSite', (req, res) => {
+//   let id = req.body.id;
+//   let site_name = req.body.site_name;
+//   let logo = req.body.logo;
+//   let tweak = req.body.tweak;
+//   let incentive = req.body.incentive;
+//   connection.updateASite(
+//     id,
+//     site_name,
+//     logo,
+//     tweak,
+//     incentive,
+//     (err, result) => {
+//       if (err) {
+//         res.send(err);
+//       } else {
+//         res.send(result);
+//       }
+//     }
+//   );
+// });
 
-app.get('/api/get', (req, res) => {
-  const id = req.query.id;
-  console.log(id);
-  connection.getSingleSite(id, (err, result) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
+// app.get('/api/get', (req, res) => {
+//   const id = req.query.id;
+//   console.log(id);
+//   connection.getSingleSite(id, (err, result) => {
+//     if (err) {
+//       res.send(err);
+//     } else {
+//       res.send(result);
+//     }
+//   });
+// });
 
 // app.get('/api/Postget', (req, res) => {
 //   const startId = req.query.id;
