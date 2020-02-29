@@ -26,7 +26,6 @@ const PORT = process.env.BOOKING_PORT || 50003;
 
 app.post('/api/booking/:id/', (req, res) => {
   // get the record for the hotel corresponding to the id passed through the url
-  console.log('123');
   connection.getTargetHotelInfo(req.params.id, (error, hotel) => {
     if (error) {
       console.error(error);
@@ -120,78 +119,67 @@ app.post('/api/booking/:id/', (req, res) => {
 });
 
 //add
-// app.post('/api/addSite', (req, res) => {
-//   let site_name = req.body.site_name;
-//   let logo = req.body.logo;
-//   let tweak = req.body.tweak;
-//   let incentive = req.body.incentive;
+app.post('/api/addSite', (req, res) => {
+  let site_name = req.body.site_name;
+  let logo = req.body.logo;
+  let tweak = req.body.tweak;
+  let incentive = req.body.incentive;
 
-//   connection.addAnewSite(site_name, logo, tweak, incentive, (err, result) => {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// });
+  connection.addAnewSite(site_name, logo, tweak, incentive, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
 
 //delete
-// app.delete('/api/delete', (req, res) => {
-//   const id = req.query.id;
-//   connection.deleteASite(id, (err, result) => {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// });
+app.delete('/api/delete', (req, res) => {
+  const id = req.query.id;
+  connection.deleteASite(id, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
 
 //update
-// app.put('/api/updateSite', (req, res) => {
-//   let id = req.body.id;
-//   let site_name = req.body.site_name;
-//   let logo = req.body.logo;
-//   let tweak = req.body.tweak;
-//   let incentive = req.body.incentive;
-//   connection.updateASite(
-//     id,
-//     site_name,
-//     logo,
-//     tweak,
-//     incentive,
-//     (err, result) => {
-//       if (err) {
-//         res.send(err);
-//       } else {
-//         res.send(result);
-//       }
-//     }
-//   );
-// });
+app.put('/api/updateSite', (req, res) => {
+  let id = req.body.id;
+  let site_name = req.body.site_name;
+  let logo = req.body.logo;
+  let tweak = req.body.tweak;
+  let incentive = req.body.incentive;
+  connection.updateASite(
+    id,
+    site_name,
+    logo,
+    tweak,
+    incentive,
+    (err, result) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
 
-// app.get('/api/get', (req, res) => {
-//   const id = req.query.id;
-//   console.log(id);
-//   connection.getSingleSite(id, (err, result) => {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// });
-
-// app.get('/api/Postget', (req, res) => {
-//   const startId = req.query.id;
-//   connection.postgresSQLgetTenPersent(startId, (err, result) => {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// });
+app.get('/api/get', (req, res) => {
+  const id = req.query.id;
+  console.log(id);
+  connection.getSingleSite(id, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

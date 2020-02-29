@@ -1,7 +1,6 @@
 import React from 'react';
 import months from '../months.js';
 import days from '../days.js';
-import { css, jsx } from '@emotion/core';
 import Calendar from './calendar.jsx';
 import Axios from 'axios';
 
@@ -95,30 +94,54 @@ class Booking extends React.Component {
     //this.updataAsite(); //checked
     //this.deleteASite(); //checked
     //this.getAsite(); //checked
-    //this.getSiteFromPostgreSQL(); //checked,route is working, but need to
-    //change id = 4500000 when database is finished seeding
+    //this.getSiteFromPostgreSQL(); //checked,route is working
 
     this.getBooking();
   }
 
   getBooking() {
-    const { address, id } = this.state;
-    Axios.post(`${address}api/booking/${id}`, {
-      checkIn: this.state.sessionCheckIn,
-      checkOut: this.state.sessionCheckOut,
-      adults: this.state.sessionAdults,
-      children: this.state.sessionChildren,
-      hello: 'hello'
-    })
-      .then(response => {
-        console.log(response);
-        this.setState(() => {
-          return { deal: response.data.deal, prices: response.data.prices };
-        });
+    const {
+      sessionCheckIn,
+      sessionCheckOut,
+      sessionAdults,
+      sessionChildren,
+      address,
+      id
+    } = this.state;
+    const result = sessionCheckOut - sessionCheckIn;
+    if (result > 15) {
+      Axios.post(`${address}api/booking/${id}`, {
+        checkIn: 15,
+        checkOut: 22,
+        adults: sessionAdults,
+        children: sessionChildren
       })
-      .catch(function(error) {
-        console.log(error);
-      });
+        .then(response => {
+          console.log(response);
+          this.setState(() => {
+            return { deal: response.data.deal, prices: response.data.prices };
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    } else {
+      Axios.post(`${address}api/booking/${id}`, {
+        checkIn: sessionCheckIn,
+        checkOut: sessionCheckOut,
+        adults: sessionAdults,
+        children: sessionChildren
+      })
+        .then(response => {
+          console.log(response);
+          this.setState(() => {
+            return { deal: response.data.deal, prices: response.data.prices };
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
   }
 
   //creat
