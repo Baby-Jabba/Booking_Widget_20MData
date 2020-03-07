@@ -1,8 +1,8 @@
 # Booking_Widget_20MData
 
 >To run this App:
-    1.npm run build;
-    2.npm start;
+>>1.npm run build;
+>>2.npm start;
 
 ADD
 '/api/addSite' with POST request
